@@ -1,13 +1,13 @@
 # 🔌 Rona Organization
 
+<h2 align="center">
+  A powerful CLI tool to streamline your Git workflow
+</h2>
 <p align="center">
   <img src="https://img.shields.io/crates/v/rona.svg" alt="Crates.io Version">
   <img src="https://img.shields.io/crates/l/rona" alt="License">
 </p>
 
-<h2 align="center">
-  A powerful CLI tool to streamline your Git workflow
-</h2>
 
 ## About
 
