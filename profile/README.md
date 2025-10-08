@@ -138,5 +138,5 @@ You may choose either license at your option.
 ## Support
 
 - **Issues:** [GitHub Issues](https://github.com/rona-rs/rona/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/rona-rs/rona/discussions)
-- **Wiki:** [Rona Wiki](https://github.com/rona-rs/rona-wiki)
+- **Discussions:** [GitHub Discussions](https://github.com/orgs/rona-rs/discussions)
+- **Wiki:** [Rona Wiki](https://github.com/rona-rs/rona/wiki)
