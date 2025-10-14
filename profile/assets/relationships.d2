@@ -1,0 +1,131 @@
+direction: down
+
+Repos: Rona Ecosystem {
+  style.fill: white
+
+  RONA: rona\nMain CLI Tool\nRust Source Code {
+    style: {
+      fill: "#e1f5ff"
+      stroke: "#01579b"
+      stroke-width: 3
+    }
+  }
+
+  WIKI: rona-wiki\nDocumentation\nGuides & Tutorials {
+    style: {
+      fill: "#fff3e0"
+      stroke: "#e65100"
+      stroke-width: 2
+    }
+  }
+
+  BREW: homebrew-rona\nHomebrew Tap\nInstallation Formula {
+    style: {
+      fill: "#f3e5f5"
+      stroke: "#4a148c"
+      stroke-width: 2
+    }
+  }
+}
+
+ExternalServices: External Services {
+  style.fill: white
+
+  CRATES: crates.io\nRust Package Registry {
+    style: {
+      fill: "#e8f5e9"
+      stroke: "#1b5e20"
+      stroke-width: 2
+    }
+  }
+
+  HOMEBREW: Homebrew\nmacOS Package Manager {
+    style: {
+      fill: "#e8f5e9"
+      stroke: "#1b5e20"
+      stroke-width: 2
+    }
+  }
+}
+
+Users: Users {
+  style.fill: white
+
+  DEV: Developers\ncargo install {
+    style: {
+      fill: "#e3f2fd"
+      stroke: "#1976d2"
+      stroke-width: 2
+    }
+  }
+
+  MAC: macOS Users\nbrew install {
+    style: {
+      fill: "#e3f2fd"
+      stroke: "#1976d2"
+      stroke-width: 2
+    }
+    top: 139
+    left: 0
+  }
+}
+
+Repos.RONA -> ExternalServices.CRATES: publishes to {
+  style: {
+    stroke: "#1976d2"
+    stroke-width: 3
+    animated: true
+  }
+}
+
+Repos.RONA -> Repos.WIKI: documented by {
+  style: {
+    stroke: "#e65100"
+    stroke-dash: 5
+    animated: false
+    stroke-width: 2
+  }
+}
+
+Repos.RONA -> Repos.BREW: version info {
+  style: {
+    stroke: "#4a148c"
+    stroke-dash: 5
+    animated: true
+    stroke-width: 2
+  }
+}
+
+Repos.BREW -> ExternalServices.CRATES: references {
+  style: {
+    stroke: "#1b5e20"
+    stroke-dash: 10
+    animated: false
+    stroke-width: 2
+  }
+}
+
+ExternalServices.HOMEBREW -> Repos.BREW: taps into {
+  style: {
+    stroke: "#7b1fa2"
+    stroke-width: 3
+    animated: true
+  }
+}
+
+Users -> ExternalServices: installs from {
+  style: {
+    stroke: "#0288d1"
+    stroke-width: 3
+    animated: true
+  }
+}
+
+Repos.WIKI -> Users: helps {
+  style: {
+    stroke: "#ff6f00"
+    stroke-dash: 5
+    animated: true
+    stroke-width: 2
+  }
+}

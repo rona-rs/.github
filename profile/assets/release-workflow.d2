@@ -1,0 +1,291 @@
+direction: down
+
+START: New Feature/Fix {
+  shape: oval
+  style: {
+    fill: "#c8e6c9"
+    stroke: "#2e7d32"
+    stroke-width: 3
+  }
+}
+
+DEVELOP: Development in rona repo {
+  style: {
+    fill: "#e1f5ff"
+    stroke: "#01579b"
+    stroke-width: 2
+  }
+}
+
+TEST: Run Tests & Linting {
+  shape: diamond
+  style: {
+    fill: "#e1f5ff"
+    stroke: "#01579b"
+    stroke-width: 2
+  }
+}
+
+PR: Create Pull Request {
+  style: {
+    fill: "#e1f5ff"
+    stroke: "#01579b"
+    stroke-width: 2
+  }
+}
+
+REVIEW: Code Review {
+  shape: diamond
+  style: {
+    fill: "#e1f5ff"
+    stroke: "#01579b"
+    stroke-width: 2
+  }
+}
+
+MERGE: Merge to main {
+  style: {
+    fill: "#e1f5ff"
+    stroke: "#01579b"
+    stroke-width: 2
+  }
+}
+
+TAG: Create Version Tag {
+  style: {
+    fill: "#e1f5ff"
+    stroke: "#01579b"
+    stroke-width: 2
+  }
+}
+
+CI: GitHub Actions CI/CD {
+  style: {
+    fill: "#e1f5ff"
+    stroke: "#01579b"
+    stroke-width: 2
+  }
+}
+
+BUILD: Build Release Binaries {
+  style: {
+    fill: "#e1f5ff"
+    stroke: "#01579b"
+    stroke-width: 2
+  }
+}
+
+PUBLISH_CRATES: Publish to crates.io {
+  style: {
+    fill: "#fff9c4"
+    stroke: "#f57f17"
+    stroke-width: 3
+  }
+}
+
+UPDATE_BREW: Update homebrew-rona Formula {
+  style: {
+    fill: "#f3e5f5"
+    stroke: "#4a148c"
+    stroke-width: 2
+  }
+}
+
+BREW_PR: Create PR in homebrew-rona {
+  style: {
+    fill: "#f3e5f5"
+    stroke: "#4a148c"
+    stroke-width: 2
+  }
+}
+
+UPDATE_DOCS: Documentation\nUpdate Needed? {
+  shape: diamond
+  style: {
+    fill: "#fff3e0"
+    stroke: "#e65100"
+    stroke-width: 2
+  }
+}
+
+WIKI_UPDATE: Update rona-wiki {
+  style: {
+    fill: "#fff3e0"
+    stroke: "#e65100"
+    stroke-width: 2
+  }
+}
+
+COMPLETE: Release Complete {
+  shape: oval
+  style: {
+    fill: "#c8e6c9"
+    stroke: "#2e7d32"
+    stroke-width: 3
+  }
+}
+
+USERS: Users can install/upgrade {
+  style: {
+    fill: "#e3f2fd"
+    stroke: "#1976d2"
+    stroke-width: 2
+  }
+}
+
+# Main flow
+START -> DEVELOP {
+  style: {
+    stroke: "#01579b"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+DEVELOP -> TEST {
+  style: {
+    stroke: "#01579b"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+TEST -> PR: All Pass {
+  style: {
+    stroke: "#2e7d32"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+TEST -> DEVELOP: Failures {
+  style: {
+    stroke: "#c62828"
+    stroke-dash: 5
+    stroke-width: 2
+    animated: false
+  }
+}
+
+PR -> REVIEW {
+  style: {
+    stroke: "#01579b"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+REVIEW -> MERGE: Approved {
+  style: {
+    stroke: "#2e7d32"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+REVIEW -> DEVELOP: Changes Requested {
+  style: {
+    stroke: "#f57f17"
+    stroke-dash: 5
+    stroke-width: 2
+    animated: false
+  }
+}
+
+MERGE -> TAG {
+  style: {
+    stroke: "#01579b"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+TAG -> CI {
+  style: {
+    stroke: "#01579b"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+CI -> BUILD {
+  style: {
+    stroke: "#01579b"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+BUILD -> PUBLISH_CRATES {
+  style: {
+    stroke: "#f57f17"
+    stroke-width: 3
+    animated: true
+  }
+}
+
+PUBLISH_CRATES -> UPDATE_BREW {
+  style: {
+    stroke: "#4a148c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+UPDATE_BREW -> BREW_PR: Update version & checksum {
+  style: {
+    stroke: "#4a148c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+PUBLISH_CRATES -> UPDATE_DOCS {
+  style: {
+    stroke: "#e65100"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+UPDATE_DOCS -> WIKI_UPDATE: Yes {
+  style: {
+    stroke: "#e65100"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+UPDATE_DOCS -> COMPLETE: No {
+  style: {
+    stroke: "#2e7d32"
+    stroke-dash: 5
+    stroke-width: 2
+    animated: false
+  }
+}
+
+WIKI_UPDATE -> COMPLETE {
+  style: {
+    stroke: "#2e7d32"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+BREW_PR -> COMPLETE {
+  style: {
+    stroke: "#2e7d32"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+COMPLETE -> USERS {
+  style: {
+    stroke: "#1976d2"
+    stroke-width: 3
+    animated: true
+  }
+}
+
