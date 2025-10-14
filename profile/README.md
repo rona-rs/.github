@@ -108,8 +108,8 @@ graph TB
     BREW -->|"references"| CRATES
     BREW -->|"taps into"| HOMEBREW
     
-    CRATES -->|"installs from"| DEV
-    HOMEBREW -->|"installs from"| MAC
+    DEV -->|"installs from"| CRATES
+    MAC -->|"installs from"| HOMEBREW
     
     WIKI -.->|"helps"| DEV
     WIKI -.->|"helps"| MAC
@@ -220,8 +220,8 @@ sequenceDiagram
     
     Note over Brew: Maintainer reviews & merges PR
     
-    Users->>Crates: brew tap rona-rs/rona<br/>brew install rona
-    Users->>Brew: OR cargo install rona
+    Users->>Brew: brew tap rona-rs/rona<br/>brew install rona
+    Users->>Crates: OR cargo install rona
 ```
 
 **Automation Details:**
