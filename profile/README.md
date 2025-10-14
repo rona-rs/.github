@@ -84,80 +84,11 @@ The Rona project consists of three interconnected repositories that work togethe
 
 ### Repository Relationships
 
-```mermaid
-graph TB
-    subgraph "Rona Ecosystem"
-        RONA[rona<br/>Main CLI Tool<br/>Rust Source Code]
-        WIKI[rona-wiki<br/>Documentation<br/>Guides & Tutorials]
-        BREW[homebrew-rona<br/>Homebrew Tap<br/>Installation Formula]
-    end
-    
-    subgraph "External Services"
-        CRATES[crates.io<br/>Rust Package Registry]
-        HOMEBREW[Homebrew<br/>macOS Package Manager]
-    end
-    
-    subgraph "Users"
-        DEV[Developers<br/>cargo install]
-        MAC[macOS Users<br/>brew install]
-    end
-    
-    RONA -->|"publishes to"| CRATES
-    RONA -->|"documented by"| WIKI
-    RONA -->|"version info"| BREW
-    BREW -->|"references"| CRATES
-    BREW -->|"taps into"| HOMEBREW
-    
-    DEV -->|"installs from"| CRATES
-    MAC -->|"installs from"| HOMEBREW
-    
-    WIKI -.->|"helps"| DEV
-    WIKI -.->|"helps"| MAC
-    
-    style RONA fill:#e1f5ff,stroke:#01579b,stroke-width:3px
-    style WIKI fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    style BREW fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    style CRATES fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
-    style HOMEBREW fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
-```
+![Repository Relationships](assets/relationships.svg)
 
 ### Release & Deployment Workflow
 
-```mermaid
-flowchart TD
-    START([New Feature/Fix]) --> DEVELOP[Development in rona repo]
-    DEVELOP --> TEST[Run Tests & Linting]
-    TEST --> |"All Pass"| PR[Create Pull Request]
-    TEST --> |"Failures"| DEVELOP
-    
-    PR --> REVIEW[Code Review]
-    REVIEW --> |"Approved"| MERGE[Merge to main]
-    REVIEW --> |"Changes Requested"| DEVELOP
-    
-    MERGE --> TAG[Create Version Tag]
-    TAG --> CI[GitHub Actions CI/CD]
-    
-    CI --> BUILD[Build Release Binaries]
-    BUILD --> PUBLISH_CRATES[Publish to crates.io]
-    
-    PUBLISH_CRATES --> UPDATE_BREW[Update homebrew-rona Formula]
-    UPDATE_BREW --> |"Update version & checksum"| BREW_PR[Create PR in homebrew-rona]
-    
-    PUBLISH_CRATES --> UPDATE_DOCS{Documentation<br/>Update Needed?}
-    UPDATE_DOCS --> |"Yes"| WIKI_UPDATE[Update rona-wiki]
-    UPDATE_DOCS --> |"No"| COMPLETE
-    
-    WIKI_UPDATE --> COMPLETE([Release Complete])
-    BREW_PR --> COMPLETE
-    
-    COMPLETE --> USERS[Users can install/upgrade]
-    
-    style START fill:#c8e6c9,stroke:#2e7d32
-    style COMPLETE fill:#c8e6c9,stroke:#2e7d32
-    style PUBLISH_CRATES fill:#fff9c4,stroke:#f57f17
-    style UPDATE_BREW fill:#f3e5f5,stroke:#4a148c
-    style WIKI_UPDATE fill:#fff3e0,stroke:#e65100
-```
+![Release & Deployment Workflow](assets/release-workflow.svg)
 
 ### How It Works
 
@@ -182,47 +113,7 @@ flowchart TD
 
 The three repositories use sophisticated cross-repository automation to coordinate releases and updates automatically. Here's how the GitHub Actions workflows communicate:
 
-```mermaid
-sequenceDiagram
-    participant Dev as Developer
-    participant Rona as rona repo
-    participant CI as GitHub Actions CI
-    participant Crates as crates.io
-    participant Brew as homebrew-rona repo
-    participant Users as End Users
-
-    Dev->>Rona: 1. Push to main with version bump in Cargo.toml
-    
-    Note over Rona,CI: release.yaml workflow triggers
-    
-    Rona->>CI: 2. check-version job detects version change
-    
-    par Parallel Build Jobs
-        CI->>CI: 3a. build-linux (Ubuntu)
-        CI->>CI: 3b. build-macos-intel (x86_64)
-        CI->>CI: 3c. build-macos-arm (ARM64)
-    end
-    
-    CI->>Rona: 4. Create Git tag (e.g., v2.10.3)
-    CI->>Rona: 5. Create GitHub Release with binaries
-    CI->>Crates: 6. cargo publish to crates.io
-    
-    Note over CI,Brew: Cross-repository dispatch
-    
-    CI->>Brew: 7. repository_dispatch event<br/>(type: rona-release)<br/>payload: {tag, tarball_url}
-    
-    Note over Brew: update-formula.yml workflow triggers
-    
-    Brew->>Rona: 8. Download tarball from GitHub
-    Brew->>Brew: 9. Compute SHA256 checksum
-    Brew->>Brew: 10. Update Formula/rona.rb<br/>(url, sha256, version)
-    Brew->>Brew: 11. Create Pull Request automatically
-    
-    Note over Brew: Maintainer reviews & merges PR
-    
-    Users->>Brew: brew tap rona-rs/rona<br/>brew install rona
-    Users->>Crates: OR cargo install rona
-```
+![GitHub Actions Coordination](assets/github-actions-coordination.svg)
 
 **Automation Details:**
 

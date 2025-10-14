@@ -1,0 +1,324 @@
+direction: down
+
+# Workflow Steps
+Step1: "1. Push to main with\nversion bump in Cargo.toml" {
+  style: {
+    fill: "#e3f2fd"
+    stroke: "#1976d2"
+    stroke-width: 2
+  }
+}
+
+Note1: "release.yaml\nworkflow triggers" {
+  shape: document
+  style: {
+    fill: "#fff9c4"
+    stroke: "#f57f17"
+    stroke-width: 2
+  }
+}
+
+Step2: "2. check-version job\ndetects version change" {
+  style: {
+    fill: "#eceff1"
+    stroke: "#455a64"
+    stroke-width: 2
+  }
+}
+
+Note2: "Parallel Build Jobs" {
+  shape: document
+  style: {
+    fill: "#fff9c4"
+    stroke: "#f57f17"
+    stroke-width: 2
+  }
+}
+
+Builds: Parallel Builds {
+  style.fill: white
+
+  Build_Linux: "3a. build-linux\n(Ubuntu)" {
+    style: {
+      fill: "#e0f2f1"
+      stroke: "#00695c"
+      stroke-width: 2
+    }
+  }
+
+  Build_Intel: "3b. build-macos-intel\n(x86_64)" {
+    style: {
+      fill: "#e0f2f1"
+      stroke: "#00695c"
+      stroke-width: 2
+    }
+  }
+
+  Build_ARM: "3c. build-macos-arm\n(ARM64)" {
+    style: {
+      fill: "#e0f2f1"
+      stroke: "#00695c"
+      stroke-width: 2
+    }
+  }
+}
+
+Step4: "4. Create Git tag\n(e.g., v2.10.3)" {
+  style: {
+    fill: "#eceff1"
+    stroke: "#455a64"
+    stroke-width: 2
+  }
+}
+
+Step5: "5. Create GitHub Release\nwith binaries" {
+  style: {
+    fill: "#e1f5ff"
+    stroke: "#01579b"
+    stroke-width: 2
+  }
+}
+
+Step6: "6. cargo publish\nto crates.io" {
+  style: {
+    fill: "#e8f5e9"
+    stroke: "#1b5e20"
+    stroke-width: 3
+  }
+}
+
+Note3: "Cross-repository\ndispatch" {
+  shape: document
+  style: {
+    fill: "#fff9c4"
+    stroke: "#f57f17"
+    stroke-width: 2
+  }
+}
+
+Step7: "7. repository_dispatch event\ntype: rona-release\npayload: {tag, tarball_url}" {
+  style: {
+    fill: "#eceff1"
+    stroke: "#455a64"
+    stroke-width: 2
+  }
+}
+
+Note4: "update-formula.yml\nworkflow triggers" {
+  shape: document
+  style: {
+    fill: "#fff9c4"
+    stroke: "#f57f17"
+    stroke-width: 2
+  }
+}
+
+Step8: "8. Download tarball\nfrom GitHub" {
+  style: {
+    fill: "#f3e5f5"
+    stroke: "#4a148c"
+    stroke-width: 2
+  }
+}
+
+Step9: "9. Compute SHA256\nchecksum" {
+  style: {
+    fill: "#f3e5f5"
+    stroke: "#4a148c"
+    stroke-width: 2
+  }
+}
+
+Step10: "10. Update Formula/rona.rb\n(url, sha256, version)" {
+  style: {
+    fill: "#f3e5f5"
+    stroke: "#4a148c"
+    stroke-width: 2
+  }
+}
+
+Step11: "11. Create Pull Request\nautomatically" {
+  style: {
+    fill: "#f3e5f5"
+    stroke: "#4a148c"
+    stroke-width: 2
+  }
+}
+
+Note5: "Maintainer reviews\n& merges PR" {
+  shape: document
+  style: {
+    fill: "#fff9c4"
+    stroke: "#f57f17"
+    stroke-width: 2
+  }
+}
+
+Step12: "Users Install\nbrew/cargo" {
+  style: {
+    fill: "#e3f2fd"
+    stroke: "#1976d2"
+    stroke-width: 2
+  }
+}
+
+# Workflow Flow
+Step1 -> Note1 {
+  style: {
+    stroke: "#1976d2"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Note1 -> Step2 {
+  style: {
+    stroke: "#455a64"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Step2 -> Note2 {
+  style: {
+    stroke: "#455a64"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Note2 -> Builds.Build_Linux {
+  style: {
+    stroke: "#00695c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Note2 -> Builds.Build_Intel {
+  style: {
+    stroke: "#00695c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Note2 -> Builds.Build_ARM {
+  style: {
+    stroke: "#00695c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Builds.Build_Linux -> Step4 {
+  style: {
+    stroke: "#455a64"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Builds.Build_Intel -> Step4 {
+  style: {
+    stroke: "#455a64"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Builds.Build_ARM -> Step4 {
+  style: {
+    stroke: "#455a64"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Step4 -> Step5 {
+  style: {
+    stroke: "#01579b"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Step5 -> Step6 {
+  style: {
+    stroke: "#1b5e20"
+    stroke-width: 3
+    animated: true
+  }
+}
+
+Step6 -> Note3 {
+  style: {
+    stroke: "#f57f17"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Note3 -> Step7 {
+  style: {
+    stroke: "#455a64"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Step7 -> Note4 {
+  style: {
+    stroke: "#4a148c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Note4 -> Step8 {
+  style: {
+    stroke: "#4a148c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Step8 -> Step9 {
+  style: {
+    stroke: "#4a148c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Step9 -> Step10 {
+  style: {
+    stroke: "#4a148c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Step10 -> Step11 {
+  style: {
+    stroke: "#4a148c"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Step11 -> Note5 {
+  style: {
+    stroke: "#f57f17"
+    stroke-width: 2
+    animated: true
+  }
+}
+
+Note5 -> Step12 {
+  style: {
+    stroke: "#1976d2"
+    stroke-width: 2
+    animated: true
+  }
+}
