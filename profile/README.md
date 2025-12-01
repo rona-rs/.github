@@ -1,4 +1,4 @@
-# 🔌 Rona Organization
+# Rona Organization
 
 <h2 align="center">
   A powerful CLI tool to streamline your Git workflow
@@ -15,14 +15,14 @@
 
 ## Key Features
 
-- 🚀 **Intelligent File Staging** - Pattern-based file exclusion with support for multiple patterns
-- 📝 **Structured Commit Messages** - Interactive commit type selection with customizable templates
-- 🔄 **Streamlined Push Operations** - One-command commit and push workflows
-- 🎯 **Customizable Configuration** - Global and project-level TOML configuration files
-- 🎨 **Template System** - Flexible commit message formatting with variables
-- 🛠 **Multi-Shell Support** - Completions for Bash, Fish, Zsh, and PowerShell
-- 🔐 **GPG Signing** - Auto-detected commit signing with GPG
-- ⚙️ **Flexible Editor Support** - Works with any command-line editor (vim, nano, code, zed, etc.)
+- **Intelligent File Staging** - Pattern-based file exclusion with support for multiple patterns
+- **Structured Commit Messages** - Interactive commit type selection with customizable templates
+- **Streamlined Push Operations** - One-command commit and push workflows
+- **Customizable Configuration** - Global and project-level TOML configuration files
+- **Template System** - Flexible commit message formatting with variables
+- **Multi-Shell Support** - Completions for Bash, Fish, Zsh, and PowerShell
+- **GPG Signing** - Auto-detected commit signing with GPG
+- **Flexible Editor Support** - Works with any command-line editor (vim, nano, code, zed, etc.)
 
 ## Quick Start
 
@@ -58,7 +58,7 @@ rona -c -p
 
 ### [rona](https://github.com/rona-rs/rona)
 The main repository containing the Rona CLI tool source code.
-- Written in Rust 🦀
+- Written in Rust
 - Comprehensive test suite
 - Continuous integration with GitHub Actions
 - Published to [crates.io](https://crates.io/crates/rona)
