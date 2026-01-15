@@ -63,14 +63,14 @@ The main repository containing the Rona CLI tool source code.
 - Continuous integration with GitHub Actions
 - Published to [crates.io](https://crates.io/crates/rona)
 
-### [rona-wiki](https://github.com/rona-rs/rona-wiki)
+### [rona-wiki](https://github.com/rona-rs/rona/wiki)
 Comprehensive documentation and guides for Rona.
-- [Installation Guide](https://github.com/rona-rs/rona-wiki/blob/main/Installation.md)
-- [Features Overview](https://github.com/rona-rs/rona-wiki/blob/main/Features.md)
-- [Usage Guide](https://github.com/rona-rs/rona-wiki/blob/main/Usage-Guide.md)
-- [Command Reference](https://github.com/rona-rs/rona-wiki/blob/main/Command-Reference.md)
-- [Shell Integration](https://github.com/rona-rs/rona-wiki/blob/main/Shell-Integration.md)
-- [FAQ](https://github.com/rona-rs/rona-wiki/blob/main/FAQ.md)
+- [Installation Guide](https://github.com/rona-rs/rona/wiki/Installation)
+- [Features Overview](https://github.com/rona-rs/rona/wiki/Features)
+- [Usage Guide](https://github.com/rona-rs/rona/wiki/Usage-Guide)
+- [Command Reference](https://github.com/rona-rs/rona/wiki/Command-Reference)
+- [Shell Integration](https://github.com/rona-rs/rona/wiki/Shell-Integration)
+- [FAQ](https://github.com/rona-rs/rona/wiki/FAQ)
 
 ### [homebrew-rona](https://github.com/rona-rs/homebrew-rona)
 Official Homebrew tap for macOS users.
@@ -97,17 +97,17 @@ The Rona project consists of three interconnected repositories that work togethe
 2. When features are complete and tested, a new version is tagged
 3. The CI/CD pipeline automatically builds and publishes to **crates.io**
 4. The **homebrew-rona** formula is updated to reference the new version
-5. The **rona-wiki** is updated if new features require documentation changes
+5. The **wiki** is updated if new features require documentation changes
 
 **User Installation Paths:**
 - **Rust Developers**: Install directly from crates.io using `cargo install rona`
 - **macOS Users**: Install via Homebrew using `brew tap rona-rs/rona && brew install rona`
-- **All Users**: Reference the **rona-wiki** for comprehensive guides and documentation
+- **All Users**: Reference the **wiki** for comprehensive guides and documentation
 
 **Repository Dependencies:**
 - **homebrew-rona** depends on **rona** for version information and release artifacts
-- **rona-wiki** documents **rona** features and usage patterns
-- Both **homebrew-rona** and **rona-wiki** must be updated when significant changes occur in **rona**
+- **wiki** documents **rona** features and usage patterns
+- Both **homebrew-rona** and **wiki** must be updated when significant changes occur in **rona**
 
 ### GitHub Actions Coordination
 
@@ -155,7 +155,7 @@ The three repositories use sophisticated cross-repository automation to coordina
 
 6. **Manual Steps**:
    - Maintainer reviews and merges the Homebrew formula PR
-   - Documentation updates in **rona-wiki** are done manually when features change
+   - Documentation updates in **wiki** are done manually when features change
 
 **Security Considerations:**
 - Uses GitHub PAT tokens for cross-repository access
@@ -165,10 +165,10 @@ The three repositories use sophisticated cross-repository automation to coordina
 
 ## Documentation
 
-- **[Wiki Home](https://github.com/rona-rs/rona-wiki)** - Start here for comprehensive documentation
-- **[Installation Guide](https://github.com/rona-rs/rona-wiki/blob/main/Installation.md)** - Multiple installation methods
-- **[Usage Guide](https://github.com/rona-rs/rona-wiki/blob/main/Usage-Guide.md)** - Learn how to use Rona effectively
-- **[Command Reference](https://github.com/rona-rs/rona-wiki/blob/main/Command-Reference.md)** - Complete command documentation
+- **[Wiki Home](https://github.com/rona-rs/rona/wiki)** - Start here for comprehensive documentation
+- **[Installation Guide](https://github.com/rona-rs/rona/wiki/Installation)** - Multiple installation methods
+- **[Usage Guide](https://github.com/rona-rs/rona/wiki/Usage-Guide)** - Learn how to use Rona effectively
+- **[Command Reference](https://github.com/rona-rs/rona/wiki/Command-Reference)** - Complete command documentation
 - **[Contributing](https://github.com/rona-rs/rona/blob/main/CONTRIBUTING.md)** - Guidelines for contributors
 
 ## Development
