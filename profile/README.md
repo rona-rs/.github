@@ -13,6 +13,8 @@
 
 **Rona** is a command-line interface tool designed to enhance your Git workflow with powerful features and intuitive commands. Built with Rust for performance and reliability, Rona simplifies common Git operations and provides additional functionality for managing commits, files, and repository status.
 
+Rona is created and maintained by [Tom Planche](https://github.com/TomPlanche). The GitHub organization exists solely to host the Homebrew tap alongside the main repository.
+
 ## Key Features
 
 - **Intelligent File Staging** - Pattern-based file exclusion with support for multiple patterns
