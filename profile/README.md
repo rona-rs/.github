@@ -21,7 +21,8 @@ Rona is created and maintained by [Tom Planche](https://github.com/TomPlanche). 
 - **Structured Commit Messages** - Interactive commit type selection with customizable templates
 - **Streamlined Push Operations** - One-command commit and push workflows
 - **Customizable Configuration** - Global and project-level TOML configuration files
-- **Template System** - Flexible commit message formatting with variables
+- **Template System** - Flexible commit message formatting with variables and conditional blocks
+- **Extra Prompt Fields** - Config-driven extra prompts (scope, ticket, etc.) with prefetching, regex validation, and configurable ordering
 - **Multi-Shell Support** - Completions for Bash, Fish, Zsh, and PowerShell
 - **GPG Signing** - Auto-detected commit signing with GPG
 - **Flexible Editor Support** - Works with any command-line editor (vim, nano, code, zed, etc.)
@@ -36,24 +37,11 @@ cargo install rona
 rona init vim  # Initialize with your preferred editor
 ```
 
-**Via Homebrew:** (WIP)
+**Via Homebrew:**
 ```bash
 brew tap rona-rs/rona
 brew install rona
-rona init vim
-```
-
-### Basic Usage
-
-```bash
-# Stage files (excluding specific patterns)
-rona -a "*.log" "*.tmp"
-
-# Generate commit message (interactive mode)
-rona -g -i
-
-# Commit and push
-rona -c -p
+rona init vim # nano, zed, ...
 ```
 
 ## Repositories
@@ -176,8 +164,8 @@ The three repositories use sophisticated cross-repository automation to coordina
 ## Development
 
 ### Requirements
-- Rust 2021 edition or later
-- Git 2.0 or later
+- Rust 2024 edition or later
+- Git 2.23 or later
 
 ### Building from Source
 ```bash
